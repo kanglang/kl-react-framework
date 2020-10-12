@@ -1,18 +1,24 @@
+/*
+ * @Author: kanglang
+ * @Date: 2020-07-12 10:20:29
+ * @LastEditors: kanglang
+ * @LastEditTime: 2020-10-09 11:25:29
+ * @Description: 生产打包配置
+ */
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 // 导入每次删除文件夹的插件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
-
 module.exports = {
     mode: 'production',
-    entry: path.join(__dirname, "./src/index.js"),
+    entry: path.join(__dirname, "../src/index.js"),
     output: {
-        path: path.join(__dirname, './lib'),
-        filename: '[name].index.js',
-        libraryTarget: 'umd',  //发布组件专用
-        library: 'ReactCmp',
+        path: path.join(__dirname, '../build'),
+        filename: '[name].bundle.js',
+        // libraryTarget: 'umd',  //发布组件专用
+        // library: 'ReactCmp',
     },
     module: {
         rules: [{
@@ -30,7 +36,7 @@ module.exports = {
         },
         {
             test: /\.(png|jpe?g|gif|svg)(\?.*)?$/, //
-            loader: 'file-loader'
+            loader: 'url-loader'
         }]
     },
     devtool: 'cheap-module-source-map',
@@ -47,8 +53,4 @@ module.exports = {
     resolve: {
         extensions: [".js", ".jsx"]
     },
-    devServer: {
-        port: 3001,
-        contentBase: './dist'
-    }
 };
