@@ -11,29 +11,27 @@ import Exception from './global/404';
 import './global/base.scss';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        // forceRefresh 在导航过程中强制刷新整个页面
-        // 在不支持 HTML5 history API 的浏览器
-        const supportsHistory = 'pushState' in window.history;
-        return (
-            <BrowserRouter forceRefresh={!supportsHistory}>
-                <Switch>
-                    {
-                        routers.map((item, index) => {
-                            return <Route exact path={item.path} component={withRouter(item.component)} key={index} />
-                        })
-                    }
-                    <Route component={Exception} />
-                </Switch>
-            </BrowserRouter>
-        );
-    }
+  constructor (props) {
+    super(props);
+  }
+  render () {
+    // forceRefresh 在导航过程中强制刷新整个页面
+    // 在不支持 HTML5 history API 的浏览器
+    const supportsHistory = 'pushState' in window.history;
+    return (
+      <BrowserRouter forceRefresh={!supportsHistory}>
+        <Switch>
+          {
+            routers.map((item, index) => <Route exact path={item.path} component={withRouter(item.component)} key={index} />)
+          }
+          <Route component={Exception} />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 ReactDOM.render(
-    <App />,
-    document.getElementById("root")
+  <App />,
+  document.getElementById('root')
 );

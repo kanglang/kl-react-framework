@@ -9,12 +9,7 @@ import React, { Component } from 'react';
 import lunboImg from '../img/lunbo.png';
 import '../css/lunbo.scss';
 
-const ManageHome = () => {
-
-    return <div className="lunbowrap">
-        <img className="lunbowrap-img" src={lunboImg} alt="" />
-    </div>
-
-
-};
+const ManageHome = () => <div className="lunbowrap">
+  <img className="lunbowrap-img" src={lunboImg} alt="" />
+</div>;
 export default ManageHome;
