@@ -1,0 +1,14 @@
+.submit{
+    height: 45px;
+    line-height: 45px;
+    margin-top: 30px;
+    text-align: center;
+    &-btn{
+        font-size: 1.4rem;
+        width: 60%;
+        background: #b3e7e7;
+        margin: 0 auto;
+        border-radius: 6px;
+        color: #FFFFFF;
+    }
+}

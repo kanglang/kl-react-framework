@@ -2,11 +2,11 @@
  * @Author: kanglang
  * @Date: 2020-07-14 08:57:14
  * @LastEditors: kanglang
- * @LastEditTime: 2020-10-12 21:50:48
+ * @LastEditTime: 2021-04-07 18:16:28
  * @Description: 我的
  */
 import React, { Component } from 'react';
-import SubmitButton from '../../common/components/submit-button';
+import SubmitButton from '../../common/submit-button';
 
 class Mine extends Component {
 
