@@ -2,7 +2,7 @@
  * @Author: kanglang
  * @Date: 2020-07-12 10:20:29
  * @LastEditors: kanglang
- * @LastEditTime: 2021-04-07 15:30:49
+ * @LastEditTime: 2021-04-09 11:08:42
  * @Description: 生产打包配置
  */
 const path = require('path');
@@ -51,6 +51,14 @@ module.exports = {
     nodeExternals()]
   ,
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
+    alias: {
+      "@src": path.resolve("src"),
+      "@common": path.resolve("src/common"),
+      "@pages": path.resolve("src/pages"),
+      "@https": path.resolve("src/https"),
+      "@api": path.resolve("src/api"),
+      "@global": path.resolve("src/global"),
+    },
   },
 };

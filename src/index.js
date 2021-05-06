@@ -7,8 +7,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch, withRouter, BrowserRouter } from 'react-router-dom';
 import routers from './routers';
-import Exception from './global/404';
-import './global/base.scss';
+import Exception from '@global/404';
+import '@global/base.scss';
 
 class App extends Component {
   constructor (props) {

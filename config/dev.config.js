@@ -2,7 +2,7 @@
  * @Author: kanglang
  * @Date: 2020-07-12 10:20:29
  * @LastEditors: kanglang
- * @LastEditTime: 2021-04-07 15:32:03
+ * @LastEditTime: 2021-05-06 15:45:40
  * @Description: dev环境调试配置
  */
 
@@ -51,10 +51,20 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
+    alias: {
+      "@src": path.resolve("src"),
+      "@common": path.resolve("src/common"),
+      "@pages": path.resolve("src/pages"),
+      "@https": path.resolve("src/https"),
+      "@api": path.resolve("src/api"),
+      "@global": path.resolve("src/global"),
+    },
   },
+
   devServer: {
     // open:true,//自动打开浏览器 这里在package.json中配置 默认打开谷歌浏览器
+    historyApiFallback: true,
     contentBase: './build',
     port: 3001, // 默认3001
     host: "127.0.0.1",
