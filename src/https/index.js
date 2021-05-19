@@ -1,6 +1,6 @@
 import axios from 'axios';
 import baseConfig from './baseConfig';
-import { keys } from '../common';
+import { Keys } from '../common';
 const { apiObj } = baseConfig;
 export const auth = apiObj.host + 'authority-api';
 export const showFile = auth + '/oss/file/';
@@ -22,23 +22,21 @@ const service = axios.create({
 service.interceptors.request.use(
   (config) => {
     config.url = apiObj.host + config.url;
-    const token = localStorage.getItem(keys.APP_TOKEN);
+    const token = localStorage.getItem(Keys.APP_TOKEN);
     if (token) {
       config.headers.common.apiKey = token;
     }
-    if (__DEV__) {
-      const logHeader = {};
-      const logparams = config.method === 'post'
-        ? JSON.stringify(config.data)
-        : JSON.stringify(config.params);
-      Object.assign(logHeader, { method: config.method }, { params: logparams });
-      console.warn(
-        `https>请求地址：${config.url}`,
-        '\n',
-        JSON.stringify(logHeader, null, '\t'),
-      );
-      start = new Date();
-    }
+    const logHeader = {};
+    const logparams = config.method === 'post'
+      ? JSON.stringify(config.data)
+      : JSON.stringify(config.params);
+    Object.assign(logHeader, { method: config.method }, { params: logparams });
+    console.warn(
+      `https>请求地址：${config.url}`,
+      '\n',
+      JSON.stringify(logHeader, null, '\t'),
+    );
+    start = new Date();
     return config;
   },
   (error) => Promise.reject(error),
@@ -49,9 +47,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     response.headers['Content-type'] = 'application/json;charset=UTF-8';
-    if (__DEV__) {
-      console.log('返回结果-->', response.data);
-    }
+    console.log('返回结果-->', response.data);
     if (response.status === 200) {
       return Promise.resolve(response);
     } else {
@@ -59,9 +55,7 @@ service.interceptors.response.use(
     }
   },
   (error) => {
-    if (__DEV__) {
-      console.log('请求错误-->', error);
-    }
+    console.log('请求错误-->', error);
     if (error.response.status) {
       switch (error.response.status) {
         // 401: 未登录

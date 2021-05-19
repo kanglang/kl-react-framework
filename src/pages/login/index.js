@@ -2,12 +2,14 @@
  * @Author: kanglang
  * @Date: 2021-04-07 18:12:46
  * @LastEditors: kanglang
- * @LastEditTime: 2021-05-06 14:40:11
+ * @LastEditTime: 2021-05-08 14:40:25
  * @Description: 登录页面   localStorage.setItem('jwToken',token)
  */
 
 import React, { Component } from 'react';
-import { keys, SubmitButton } from '@common';
+import { Keys, SubmitButton, Toast } from '@common';
+import userApi from '@api/user';
+
 class Login extends Component {
 
     render() {
@@ -28,9 +30,30 @@ class Login extends Component {
     }
 
     login = () => {
+        // Toast.info('普通的Tofff滚滚滚ast！！', false, 300000);
+        // Toast.success('操作成功', true, 30000);
+        // Toast.error('程序异常', false, 300000);
+        Toast.loading("支付中...")
+        // Toast.warning('爆炸警告', false, 300000);
+        // Toast.show('加载中d顶都掉的顶顶顶...', false, 0);
+        // const timer = setTimeout(() => {
+        //     Toast.hide();
+        //     clearTimeout(timer);
+        // }, 3000);
+        // api.user.getUserInfo().then(res => {
+        //     console.log("==========================>", res)
+        // });
         // 掉登录接口 登录成功后保存token
-        localStorage.setItem(keys.APP_TOKEN, "jdfsfsdfkkkkKKKkldfldsfdsf78899sdfsfs")
-        this.props.history.push('/')
+        // localStorage.setItem(Keys.APP_TOKEN, "jdfsfsdfkkkkKKKkldfldsfdsf78899sdfsfs")
+        // this.props.history.push('/')
+
+        // userApi.loginPwd({ mobile: '16687770123', password: '1234456' }).then(loginRes => {
+        //     if (loginRes.success) {
+        //         alert('成功')
+        //     } else {
+
+        //     }
+        // });
     }
 
 }
